@@ -171,19 +171,19 @@ public class DequeTest {
     public static void main(String[] args) {
         // Uncomment each test as you implement the corresponding method:
 
-        // testDequeConstructor();
-        // testDequeIsEmpty();
-        // testDequeSize();
-        // testDequeAddFirst();
-        // testDequeAddLast();
-        // testDequeAddFirstNull();
-        // testDequeAddLastNull();
-        // testDequeRemoveFirst();
-        // testDequeRemoveLast();
-        // testDequeRemoveFirstFromSingleton();
-        // testDequeRemoveLastFromSingleton();
-        // testDequeRemoveFirstEmpty();
-        // testDequeRemoveLastEmpty();
+        testDequeConstructor();
+        testDequeIsEmpty();
+        testDequeSize();
+        testDequeAddFirst();
+        testDequeAddLast();
+        testDequeAddFirstNull();
+        testDequeAddLastNull();
+        testDequeRemoveFirst();
+        testDequeRemoveLast();
+        testDequeRemoveFirstFromSingleton();
+        testDequeRemoveLastFromSingleton();
+        testDequeRemoveFirstEmpty();
+        testDequeRemoveLastEmpty();
         // testDequeIterator();
         // testDequeIteratorNextExhausted();
         // testDequeIteratorRemoveUnsupported();
