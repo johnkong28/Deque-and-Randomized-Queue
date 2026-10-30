@@ -12,8 +12,8 @@ public class Deque<Item> implements Iterable<Item> {
         Item item;
         Node next;
         Node prev;
-        public Node(Item item){
-            item = this.item;
+        public Node(Item itema){
+            item = itema;
         }
     }
 
@@ -68,7 +68,7 @@ public class Deque<Item> implements Iterable<Item> {
         }
         Node newthing = new Node(item);
         newthing.prev = tail.prev;
-        newthing.prev = tail;
+        newthing.next = tail;
         tail.prev.next = newthing;
         tail.prev = newthing;
         size++;
@@ -94,6 +94,9 @@ public class Deque<Item> implements Iterable<Item> {
     /** Remove and return the back item; throw NoSuchElementException if empty. */
     public Item removeLast() {
         // TODO: Remove the back node and update head/tail pointers.
+        if (isEmpty()){
+            throw new java.util.NoSuchElementException("e");
+        }
         Node newlast = tail.prev.prev;
         Item chegg = tail.prev.item;
         tail.prev.item = null;
