@@ -40,6 +40,9 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
     public void enqueue(Item item) {
         // TODO: Add the item to the backing array, resizing as needed.
+        if (item == null){
+            throw new IllegalArgumentException("e");
+        }
         if (size == items.length){
             resize(2*size);
         }
@@ -50,20 +53,28 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     /** Remove and return a uniformly random item; throw NoSuchElementException if empty. */
     public Item dequeue() {
         // TODO: Pick a random index between 0 and size-1; swap the chosen item with the last item, then remove and resize as needed.
+        if (size == 0){
+            throw new NoSuchElementException("e");
+        }
         int idx = (int) Math.floor(Math.random()*(size-1));
         Item thigamabob = items[idx];
-        items[idx] = items[size--];
-        items[size] = null;
+        items[idx] = items[size-1];
+        items[size-1] = null;
         if (size <= items.length/4) {
             resize((int) items.length / 2);
         }
+        size--;
         return thigamabob;
     }
 
     /** Return a uniformly random item without removing it; throw NoSuchElementException if empty. */
     public Item sample() {
         // TODO: Pick a random index between 0 and size-1 and return that array item without removing it.
+        if (size == 0){
+            throw new NoSuchElementException("e");
+        }
         int idx = (int) Math.floor(Math.random()*(size-1));
+
         return items[idx];
     }
 
@@ -87,18 +98,22 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
                 indexes[i] = i;
             }
             for (int i = 0; i < size; i++){
-                int idx = (int) Math.floor(Math.random()*(size-1-i));
+                int idx = (int) Math.floor(Math.random()*(size-i-1));
+                shuffledItems[i] = items[indexes[idx]];
+                indexes[idx] = indexes[size-i-1];
 
             }
         }
         @Override
         public boolean hasNext() {
-
             return current < size;
         }
 
         @Override
         public Item next() {
+            if (!hasNext()){
+                throw new NoSuchElementException("e");
+            }
             Item old = shuffledItems[current];
             current++;
             return old;
